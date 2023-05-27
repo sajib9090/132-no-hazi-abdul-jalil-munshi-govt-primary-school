@@ -6,12 +6,14 @@ import NewsAndUpdate from "./NewsAndUpdate";
 import OurTeachers from "./OurTeachers";
 import RandomMarque from "./RandomMarque";
 import SchoolCarousel from "./SchoolCarousel";
+import Space from "./Space";
 
 const Home = () => {
   return (
     <div>
       <Hero />
       <SchoolCarousel />
+      <Space />
       <Award />
       <Headmaster />
       <NewsAndUpdate />

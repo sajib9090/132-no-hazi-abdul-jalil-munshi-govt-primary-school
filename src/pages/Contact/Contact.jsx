@@ -15,8 +15,8 @@ const Contact = () => {
     zoom: 11,
   };
 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  // const { register, handleSubmit } = useForm();
+  // const onSubmit = (data) => console.log(data);
   return (
     <div className="px-8 mt-16 mb-12">
       <div style={{ height: "100vh", width: "100%" }}>
@@ -37,12 +37,12 @@ const Contact = () => {
             quisbibendum auci elit consequat ipsutis sem nibh id elitsed
             vulputate.
           </p>
-          <a className="flex items-center" href="tel:+9112345678">
+          <a className="flex items-center" href="tel:8801960774377">
             {" "}
-            <FaPhoneAlt className="mr-2"></FaPhoneAlt> +91 12345678
+            <FaPhoneAlt className="mr-2"></FaPhoneAlt> +8801960774377
           </a>
           <a className="flex items-center" href="mailto:xyz@abc.com">
-            <FaMailBulk className="mr-2"></FaMailBulk> mailto:xyz@abc.com
+            <FaMailBulk className="mr-2"></FaMailBulk> ahasunahamad@gmail.com
           </a>
           <address className="flex items-center">
             <FaSearchLocation className="mr-2"></FaSearchLocation> No: 58 A,

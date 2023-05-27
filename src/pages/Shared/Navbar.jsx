@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/img/logo/school logo.png";
+import logo from "../../assets/img/logo/logoo.png";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-primary text-primary-content fixed top-0 z-[999]">
+      <div className="navbar bg-gradient-to-r via-[#753a88] from-[#cc2b5e] text-primary-content fixed top-0 z-[999]">
         <div className="navbar-start w-[30%] md:w-[50%]">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -65,14 +65,14 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/news"
+                  to="/posts"
                   className={({ isActive }) =>
                     isActive
                       ? "text-primary bg-white"
                       : "hover:bg-white hover:text-primary duration-500 ease-in-out"
                   }
                 >
-                  News
+                  Posts
                 </NavLink>
               </li>
               <li>
@@ -145,8 +145,9 @@ const Navbar = () => {
                     {/* <span className="badge"></span> */}
                   </a>
                 </li>
-                {user.email == "nispapdevilsajib@gmail.com" ||
-                user.email == "ahasunahamad@gmail.com" ? (
+                {user?.email == "nispapdevilsajib@gmail.com" ||
+                user?.email == "ahasunahamad@gmail.com" ||
+                user?.email == "rakibojha99@gmail.com" ? (
                   <>
                     {" "}
                     <NavLink
@@ -170,11 +171,11 @@ const Navbar = () => {
                           ? "text-primary bg-white rounded-lg"
                           : "hover:bg-white hover:text-primary duration-500 ease-in-out"
                       }
-                      to="/addNews"
+                      to="/addPosts"
                     >
                       <li>
                         <a className="justify-between hover:bg-white hover:text-primary duration-500 ease-in-out">
-                          Add News
+                          Add Posts
                           {/* <span className="badge"></span> */}
                         </a>
                       </li>

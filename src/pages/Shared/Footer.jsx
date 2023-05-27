@@ -7,7 +7,6 @@ import {
   FaLinkedin,
   FaPhoneAlt,
   FaMailBulk,
-  FaSearchLocation,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -16,12 +15,12 @@ const Footer = () => {
       <footer className="footer p-10 bg-[#1B1B1B] text-white">
         <div>
           <img className="h-12 mb-6" src={logo} alt="" />
-          <a className="flex items-center" href="tel:+9112345678">
+          <a className="flex items-center" href="tel:8801960774377">
             {" "}
-            <FaPhoneAlt className="mr-2"></FaPhoneAlt> +91 12345678
+            <FaPhoneAlt className="mr-2"></FaPhoneAlt> +8801960774377
           </a>
           <a className="flex items-center" href="mailto:xyz@abc.com">
-            <FaMailBulk className="mr-2"></FaMailBulk> mailto:xyz@abc.com
+            <FaMailBulk className="mr-2"></FaMailBulk> ahasunahamad@gmail.com
           </a>
         </div>
         <div>

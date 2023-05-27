@@ -1,19 +1,46 @@
-import React from "react";
-import head from "../../assets/img/New folder/head teacher.jpg";
+import React, { useEffect, useState } from "react";
 import "./Hero.css";
+import Head from "./Head";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Headmaster = () => {
+  const [headmaster, setHeadMaster] = useState([]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/teachers`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       const headmaster =
+  //         data && data?.find((head) => head?.title == "Headmaster");
+  //       setHeadMaster(headmaster);
+  //     });
+  // }, []);
+
+  useEffect(() => {
+    fetch(
+      `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/titleFind/Headmaster`,
+      {}
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setHeadMaster(data[0]);
+      });
+  }, []);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  // console.log(headmaster);
   return (
-    <div className="grid md:grid-cols-12 px-8 mt-32">
-      <div className="h-[50vh] md:h-[100vh] md:col-span-4 text-center flex flex-col justify-center">
-        <img className="h-[337px] mx-auto" src={head} alt="" />
-        <div className="pt-2 md:pt-6">
-          <h4 className="font-light tracking-[5px] text-[12px]">HEADMASTER</h4>
-          <h2 className="text-[#666666] text-[2.4rem] font-bold leading-[0.8em] pt-2">
-            Michel Groch
-          </h2>
-        </div>
-      </div>
+    <div
+      className="grid md:grid-cols-12 px-8 mt-32"
+      data-aos="zoom-in-down"
+      data-aos-duration="1000"
+    >
+      {<Head headmaster={headmaster} />}
       <div className="md:h-[100vh] md:col-span-8 flex flex-col justify-center">
         <div>
           <h4 className="font-light text-[1rem] tracking-[12px] my-6">

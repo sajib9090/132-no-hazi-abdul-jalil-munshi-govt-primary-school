@@ -10,11 +10,14 @@ import Login from "../pages/Login/Login";
 import AddTeacher from "../pages/Admin/AddTeacher";
 import AddNews from "../pages/Admin/AddNews";
 import PrivateRoutes from "./PrivateRoutes";
+import Teachers from "../pages/About/Teachers";
+import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -23,18 +26,30 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        loader: () =>
+          fetch(
+            `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/teachers`
+          ),
       },
       {
         path: "/contact",
         element: <Contact />,
       },
       {
-        path: "/News",
+        path: "/posts",
         element: <News />,
+        loader: () =>
+          fetch(
+            `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/posts`
+          ),
       },
       {
         path: "/Gallery",
         element: <Gallery />,
+      },
+      {
+        path: "/teachers",
+        element: <Teachers />,
       },
       {
         path: "/login",
@@ -49,7 +64,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/addNews",
+        path: "/addPosts",
         element: (
           <PrivateRoutes>
             <AddNews />

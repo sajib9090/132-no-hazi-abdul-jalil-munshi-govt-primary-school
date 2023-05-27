@@ -1,7 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Home/Hero.css";
+import AllTeachers from "./AllTeachers";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Teachers = () => {
+  const teachers = useLoaderData();
+
+  const [allTeachers, setAllTeachers] = useState(teachers);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/teachers`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAllTeachers(data);
+  //     });
+  // }, []);
+
+  // console.log(allTeachers);
+
+  console.log(allTeachers);
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            const remaining = allTeachers?.filter(
+              (teacher) => teacher._id != _id
+            );
+            setAllTeachers(remaining);
+          });
+      }
+    });
+  };
   return (
     <div className="mt-36 mb-28 px-5">
       <div className="text-center">
@@ -13,126 +60,14 @@ const Teachers = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-4">
-        <div className="containerr">
-          <img
-            className="mx-auto imagee"
-            src="https://i.ibb.co/gtHNC56/head-teacher.jpg"
-            alt=""
-          />
-          <div className="overlayy">
-            <div className="textt">
-              <div>
-                <h3 className="font-bold">Andy Jones</h3>
-                <p className="font-light">Biology Teacher</p>
-              </div>
-              <div>
-                <button className="px-6 py-1 border-2 mt-6 hover:bg-white hover:bg-opacity-25 duration-500 border-white">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="containerr">
-          <img
-            className="mx-auto imagee"
-            src="https://i.ibb.co/gtHNC56/head-teacher.jpg"
-            alt=""
-          />
-          <div className="overlayy">
-            <div className="textt">
-              <div>
-                <h3 className="font-bold">Andy Jones</h3>
-                <p className="font-light">Biology Teacher</p>
-              </div>
-              <div>
-                <button className="px-6 py-1 border-2 mt-6 hover:bg-white hover:bg-opacity-25 duration-500 border-white">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="containerr">
-          <img
-            className="mx-auto imagee"
-            src="https://i.ibb.co/gtHNC56/head-teacher.jpg"
-            alt=""
-          />
-          <div className="overlayy">
-            <div className="textt">
-              <div>
-                <h3 className="font-bold">Andy Jones</h3>
-                <p className="font-light">Biology Teacher</p>
-              </div>
-              <div>
-                <button className="px-6 py-1 border-2 mt-6 hover:bg-white hover:bg-opacity-25 duration-500 border-white">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="containerr">
-          <img
-            className="mx-auto imagee"
-            src="https://i.ibb.co/gtHNC56/head-teacher.jpg"
-            alt=""
-          />
-          <div className="overlayy">
-            <div className="textt">
-              <div>
-                <h3 className="font-bold">Andy Jones</h3>
-                <p className="font-light">Biology Teacher</p>
-              </div>
-              <div>
-                <button className="px-6 py-1 border-2 mt-6 hover:bg-white hover:bg-opacity-25 duration-500 border-white">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="containerr">
-          <img
-            className="mx-auto imagee"
-            src="https://i.ibb.co/gtHNC56/head-teacher.jpg"
-            alt=""
-          />
-          <div className="overlayy">
-            <div className="textt">
-              <div>
-                <h3 className="font-bold">Andy Jones</h3>
-                <p className="font-light">Biology Teacher</p>
-              </div>
-              <div>
-                <button className="px-6 py-1 border-2 mt-6 hover:bg-white hover:bg-opacity-25 duration-500 border-white">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="containerr">
-          <img
-            className="mx-auto imagee"
-            src="https://i.ibb.co/gtHNC56/head-teacher.jpg"
-            alt=""
-          />
-          <div className="overlayy">
-            <div className="textt">
-              <div>
-                <h3 className="font-bold">Andy Jones</h3>
-                <p className="font-light">Biology Teacher</p>
-              </div>
-              <div>
-                <button className="px-6 py-1 border-2 mt-6 hover:bg-white hover:bg-opacity-25 duration-500 border-white">
-                  Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        {allTeachers &&
+          allTeachers.map((teacher) => (
+            <AllTeachers
+              key={teacher._id}
+              teacher={teacher}
+              handleDelete={handleDelete}
+            />
+          ))}
       </div>
     </div>
   );

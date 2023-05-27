@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Hero.css";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Hero = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <div className="hero-sec h-[100vh]">
       <div className="flex items-center justify-center h-[100vh]">
         <div className="h-[60vh] md:h-[100vh] w-[85%] md:w-[50%] mx-auto md:mx-0 bg-[#3AB6E3] bg-opacity-75 md:ml-auto">
-          <div className="mx-auto md:max-w-md px-6 md:px-0 pt-[30%] md:pt-[15%]">
+          <div
+            className="mx-auto md:max-w-md px-6 md:px-0 pt-[30%] md:pt-[15%]"
+            data-aos="zoom-in-down"
+            data-aos-duration="1000"
+          >
             <h5 className="font-medium text-[1rem] md:text-[1.6rem] tracking-[12px] text-white">
               ACADEMICS
             </h5>
@@ -17,9 +27,11 @@ const Hero = () => {
               We believe that there is nothing more important than skillful
               education. Doing the right thing, at the right time.
             </p>
-            <button className="border-2 font-semibold mt-4 hover:bg-white hover:bg-opacity-40 border-white px-6 py-2 text-white">
-              About Us
-            </button>
+            <Link to="/about">
+              <button className="border-2 font-semibold mt-4 hover:bg-white hover:bg-opacity-40 border-white px-6 py-2 text-white">
+                About Us
+              </button>
+            </Link>
           </div>
         </div>
       </div>

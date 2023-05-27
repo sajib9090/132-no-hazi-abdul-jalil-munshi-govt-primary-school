@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "react-carousel-minimal";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SchoolCarousel = () => {
   const data = [
@@ -58,8 +60,11 @@ const SchoolCarousel = () => {
     fontSize: "20px",
     fontWeight: "bold",
   };
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <div className="App mt-36">
+    <div className="App mt-36" data-aos="zoom-in-down" data-aos-duration="1000">
       <div style={{ textAlign: "center" }}>
         <h2 className="text-lg font-thin mb-4 tracking-[12px]">Our School</h2>
         <p className="text-3xl font-bold">

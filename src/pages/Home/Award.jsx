@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import national from "../../assets/img/icon/national award.png";
 import best from "../../assets/img/icon/best teacher.png";
 import many from "../../assets/img/icon/courses.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Award = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <div className="grid md:grid-cols-3 mt-40 md:gap-6">
+    <div
+      className="grid md:grid-cols-3 mt-40 md:gap-6"
+      data-aos="zoom-in-down"
+      data-aos-duration="1000"
+    >
       <div className="h-[30vh] md:h-[40vh] md:grid md:grid-cols-12 px-8">
         <div className="h-[10vh] md:h-[40vh] col-span-3">
           <img className="w-16" src={national} alt="" />
