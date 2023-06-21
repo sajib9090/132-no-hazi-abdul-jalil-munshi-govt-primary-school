@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Hero.css";
 import SingleTeacher from "./SingleTeacher";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import UseAllUsers from "../../Hooks/UseAllUsers";
 
 const OurTeachers = () => {
-  const [teachers, setTeachers] = useState([]);
-  useEffect(() => {
-    fetch(
-      `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/teachers`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setTeachers(data);
-      });
-  }, []);
-
+  const [users] = UseAllUsers();
+  const teachers = users.filter((teacher) => teacher.role === "teacher");
   useEffect(() => {
     AOS.init();
   }, []);
@@ -47,12 +39,9 @@ const OurTeachers = () => {
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-4 px-4 pb-10">
-        {teachers &&
-          teachers
-            .slice(0, 3)
-            .map((teacher) => (
-              <SingleTeacher key={teacher._id} teacher={teacher} />
-            ))}
+        {teachers?.slice(0, 6).map((teacher) => (
+          <SingleTeacher key={teacher._id} teacher={teacher} />
+        ))}
       </div>
     </div>
   );

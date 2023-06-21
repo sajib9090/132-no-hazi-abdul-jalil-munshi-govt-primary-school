@@ -1,54 +1,10 @@
-import React, { useEffect, useState } from "react";
+import UseAllUsers from "../../Hooks/UseAllUsers";
 import "../Home/Hero.css";
 import AllTeachers from "./AllTeachers";
-import { useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
 
 const Teachers = () => {
-  const teachers = useLoaderData();
-
-  const [allTeachers, setAllTeachers] = useState(teachers);
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/teachers`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setAllTeachers(data);
-  //     });
-  // }, []);
-
-  // console.log(allTeachers);
-
-  console.log(allTeachers);
-
-  const handleDelete = (_id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(
-          `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            const remaining = allTeachers?.filter(
-              (teacher) => teacher._id != _id
-            );
-            setAllTeachers(remaining);
-          });
-      }
-    });
-  };
+  const [users] = UseAllUsers();
+  const teachers = users.filter((user) => user.role === "teacher");
   return (
     <div className="mt-36 mb-28 px-5">
       <div className="text-center">
@@ -59,15 +15,10 @@ const Teachers = () => {
           venenatis arcu.
         </p>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
-        {allTeachers &&
-          allTeachers.map((teacher) => (
-            <AllTeachers
-              key={teacher._id}
-              teacher={teacher}
-              handleDelete={handleDelete}
-            />
-          ))}
+      <div className="grid md:grid-cols-4 gap-4">
+        {teachers?.map((user) => (
+          <AllTeachers key={user._id} user={user} />
+        ))}
       </div>
     </div>
   );

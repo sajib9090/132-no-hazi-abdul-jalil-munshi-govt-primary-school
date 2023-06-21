@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "no-primary-school-auth"
-  }
+    "default": "hazi-abdul-jalil-munshi-school",
+    "staging": "hazi-abdul-jalil-munshi-school"
+  },
+  "targets": {},
+  "etags": {}
 }

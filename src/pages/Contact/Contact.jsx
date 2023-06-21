@@ -1,33 +1,12 @@
-import React from "react";
-import GoogleMapReact from "google-map-react";
-import { useForm } from "react-hook-form";
 import "../Home/Hero.css";
 import { FaPhoneAlt, FaMailBulk, FaSearchLocation } from "react-icons/fa";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 const Contact = () => {
-  const defaultProps = {
-    center: {
-      lat: 23.307169,
-      lng: 90.408006,
-    },
-    zoom: 11,
-  };
-
   // const { register, handleSubmit } = useForm();
   // const onSubmit = (data) => console.log(data);
   return (
     <div className="px-8 mt-16 mb-12">
-      <div style={{ height: "100vh", width: "100%" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "" }}
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}
-        >
-          <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
-        </GoogleMapReact>
-      </div>
+      <div style={{ height: "100vh", width: "100%" }}></div>
       <div>
         <div className="mb-8 mt-16">
           <h2 className="text-[#666666] text-4xl font-bold">Contact Us</h2>

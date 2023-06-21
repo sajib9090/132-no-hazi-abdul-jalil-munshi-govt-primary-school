@@ -1,5 +1,4 @@
-import React from "react";
-import logo from "../../assets/img/logo/school logo.png";
+import logo from "../../assets/img/logo/logoo.png";
 import {
   FaFacebookF,
   FaTwitter,
@@ -50,7 +49,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </div>
         <div>
-          <span className="footer-title text-white text-xl capitalize">
+          {/* <span className="footer-title text-white text-xl capitalize">
             Newsletter
           </span>
           <div className="form-control w-80">
@@ -72,7 +71,7 @@ const Footer = () => {
           </div>
           <span className="footer-title text-white text-xl capitalize">
             Connect with us
-          </span>
+          </span> */}
           <div className="flex items-center space-x-4 text-xl">
             <p>
               <FaTwitter className="hover:scale-125 hover:text-[#eb5662] duration-500"></FaTwitter>

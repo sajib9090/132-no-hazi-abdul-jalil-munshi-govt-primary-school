@@ -1,5 +1,3 @@
-import React from "react";
-
 const Post = () => {
   return (
     <div className="grid md:grid-cols-2 px-4 mt-14">

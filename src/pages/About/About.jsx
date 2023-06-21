@@ -7,9 +7,7 @@ import Post from "./post";
 const About = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/posts`
-    )
+    fetch(`${import.meta.env.VITE_API_URL}/posts`)
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);
@@ -19,30 +17,8 @@ const About = () => {
     <div className="mt-36">
       {posts &&
         posts
-          ?.slice(0, 2)
+          ?.slice(0, 1)
           .map((post) => <Post key={post._id} post={post}></Post>)}
-      {/* <div className="grid md:grid-cols-2 px-4 mt-14">
-        <div className="h-[370px]">
-          <img
-            className="w-[100%] h-[100%]"
-            src="https://i.ibb.co/gMpPwmR/news-1.jpg"
-            alt=""
-          />
-        </div>
-        <div className="h-[370px] flex flex-col justify-center md:pl-8">
-          <h4 className="font-light text-sm tracking-[12px]">MISION</h4>
-          <h1 className="font-bold text-[36px] max-w-sm text-[#666666]">
-            We make the most of all our students.
-          </h1>
-          <p className="dividerr"></p>
-          <p className="text-[#666666] text-sm mt-4 max-w-md">
-            Duis vel erat quis justo vehicula vulputate sit amet nec nisi. Fusce
-            a venenatis arcu, vel varius mi. Donec elit lacus, fringilla
-            placerat aliquet sed, eleifend ac tortor. Morbi lectus mi, imperdiet
-            a metus vel, consectetur blandit est.{" "}
-          </p>
-        </div>
-      </div> */}
 
       <div className="md:h-[300px]  mt-14 countt">
         <div className="bg-[#33B8EB] w-[100%] py-4 md:py-0 h-[100%] bg-opacity-75 flex flex-col md:flex-row  items-center justify-center">
@@ -73,7 +49,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="h-[100vh] mt-32 px-4 py-6 grid md:grid-cols-2">
+      <div className="md:h-[100vh] mt-32 px-4 py-6 grid md:grid-cols-2">
         <div>
           <img src="https://i.ibb.co/C2hwWzL/intro-schools.png" alt="" />
         </div>

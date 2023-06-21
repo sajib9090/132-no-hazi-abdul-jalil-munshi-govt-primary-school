@@ -1,46 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Hero.css";
 import Head from "./Head";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import UseAllUsers from "../../Hooks/UseAllUsers";
 
 const Headmaster = () => {
-  const [headmaster, setHeadMaster] = useState([]);
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/teachers`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       const headmaster =
-  //         data && data?.find((head) => head?.title == "Headmaster");
-  //       setHeadMaster(headmaster);
-  //     });
-  // }, []);
-
-  useEffect(() => {
-    fetch(
-      `https://132-no-hazi-abdul-jalil-munshi-govt-prim-folisonjayson-gmailcom.vercel.app/titleFind/Headmaster`,
-      {}
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setHeadMaster(data[0]);
-      });
-  }, []);
-
+  const [users] = UseAllUsers();
+  const headmaster = users.filter((user) => user.role === "headmaster");
+  // console.log(headmaster);
   useEffect(() => {
     AOS.init();
   }, []);
 
-  // console.log(headmaster);
   return (
     <div
       className="grid md:grid-cols-12 px-8 mt-32"
       data-aos="zoom-in-down"
       data-aos-duration="1000"
     >
-      {<Head headmaster={headmaster} />}
+      {headmaster?.map((head) => (
+        <Head key={head._id} head={head} />
+      ))}
       <div className="md:h-[100vh] md:col-span-8 flex flex-col justify-center">
         <div>
           <h4 className="font-light text-[1rem] tracking-[12px] my-6">
